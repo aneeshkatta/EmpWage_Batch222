@@ -13,13 +13,15 @@ namespace EmpWage_Batch222
             Console.WriteLine("Welcome to Employee Wage Computation problem");
             const int is_fulltime = 1;
             const int is_parttime = 2;
+            const int MAX_HRS_PER_MONTH = 100;
             int emphrs = 0, dailywage = 0;
             int totalemphrs = 0;
             int rateperhr = 20;
             const int No_OF_Working_days = 20;
             int monthlywage = 0;
-            
-            for (int day = 1; day <= No_OF_Working_days; day++)
+            int day = 1;
+
+            while (day <= No_OF_Working_days && totalemphrs <= MAX_HRS_PER_MONTH)
             {
                 Random random = new Random();
                 int empCheck = random.Next(0, 2);
@@ -41,6 +43,7 @@ namespace EmpWage_Batch222
                 dailywage = emphrs * rateperhr;
                 Console.WriteLine("day{0}-Dailywage is {1}", day, dailywage);
                 monthlywage += dailywage;
+                day++;
             }
            
             Console.WriteLine("Monthly wage of employee is " + monthlywage);
