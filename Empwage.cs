@@ -12,6 +12,7 @@ namespace EmpWage_Batch222
         {
             Console.WriteLine("Welcome to Employee Wage Computation problem");
             int is_fulltime = 1;
+            int is_parttime = 2;
             int emphrs = 0;
             int rateperhr = 20;
             Random random = new Random();
@@ -24,7 +25,7 @@ namespace EmpWage_Batch222
             else
             {
                 Console.WriteLine("Employee is absent");
-                emphrs = 4;
+                emphrs = 0;
             }
             int DailyWage = emphrs * rateperhr;
             Console.WriteLine("Daily wage of employee is " + DailyWage);
