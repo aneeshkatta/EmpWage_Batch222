@@ -19,8 +19,13 @@ namespace EmpWage_Batch222
             int empCheck = random.Next(0, 2);
             if (empCheck == is_fulltime)
             {
-                Console.WriteLine("Employee is present");
+                Console.WriteLine("Employee is present full time");
                 emphrs = 8;
+            }
+            else if(empCheck == is_parttime)
+            {
+                Console.WriteLine("Employee is present part time");
+                emphrs = 4;
             }
             else
             {
