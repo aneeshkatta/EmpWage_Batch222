@@ -6,47 +6,51 @@ using System.Threading.Tasks;
 
 namespace EmpWage_Batch222
 {
-     class Empwage
+     class EmpWage
     {
-        static void Main()
+        public const int is_Fulltime = 1;
+        public const int is_Parttime = 2;
+        public const int mAX_HRS_PER_MONTH = 100;
+        public const int no_OF_Working_Days = 20;
+        public const int empRatePerHr = 20;
+        public static int ComputeWage()
         {
             Console.WriteLine("Welcome to Employee Wage Computation problem");
-            const int is_fulltime = 1;
-            const int is_parttime = 2;
-            const int MAX_HRS_PER_MONTH = 100;
-            int emphrs = 0, dailywage = 0;
-            int totalemphrs = 0;
-            int rateperhr = 20;
-            const int No_OF_Working_days = 20;
-            int monthlywage = 0;
+            int empHrs;
+            int totalEmpHrs = 0;
             int day = 1;
-
-            while (day <= No_OF_Working_days && totalemphrs <= MAX_HRS_PER_MONTH)
+            while (day <= no_OF_Working_Days && totalEmpHrs <= mAX_HRS_PER_MONTH)
             {
                 Random random = new Random();
                 int empCheck = random.Next(0, 2);
                 switch (empCheck)
                 {
-                    case is_fulltime:
+                    case is_Fulltime:
                         Console.WriteLine("Employee is present full time");
-                        emphrs = 8;
+                        empHrs = 8;
                         break;
-                    case is_parttime:
+                    case is_Parttime:
                         Console.WriteLine("Employee is present part time");
-                        emphrs = 4;
+                        empHrs = 4;
                         break;
                     default:
                         Console.WriteLine("Employee is absent");
-                        emphrs = 0;
+                        empHrs = 0;
                         break;
                 }
-                dailywage = emphrs * rateperhr;
-                Console.WriteLine("day{0}-Dailywage is {1}", day, dailywage);
-                monthlywage += dailywage;
+                totalEmpHrs += empHrs;
+                Console.WriteLine(" Day   #: " + day + "  Employee hours attended till the day  is " + totalEmpHrs);
                 day++;
             }
-           
-            Console.WriteLine("Monthly wage of employee is " + monthlywage);
+            int totalEmpWage = totalEmpHrs * empRatePerHr;
+            Console.WriteLine("  Employee Total monthly wage for Company :" + totalEmpWage);
+            return totalEmpWage;
+        
         }
-    }
+        public static void Main(string[] args)
+        {
+            ComputeWage();
+
+        }
+     }
 }
