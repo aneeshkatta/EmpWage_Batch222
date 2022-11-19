@@ -10,10 +10,7 @@ namespace EmpWage_Batch222
     {
         public const int is_Fulltime = 1;
         public const int is_Parttime = 2;
-        public const int mAX_HRS_PER_MONTH = 100;
-        public const int no_OF_Working_Days = 20;
-        public const int empRatePerHr = 20;
-        public static int ComputeWage()
+        public static int ComputeWage(string company,int mAX_HRS_PER_MONTH,int no_OF_Working_Days,int empRatePerHr)
         {
             Console.WriteLine("Welcome to Employee Wage Computation problem");
             int empHrs;
@@ -45,12 +42,12 @@ namespace EmpWage_Batch222
             int totalEmpWage = totalEmpHrs * empRatePerHr;
             Console.WriteLine("  Employee Total monthly wage for Company :" + totalEmpWage);
             return totalEmpWage;
-        
         }
         public static void Main(string[] args)
         {
-            ComputeWage();
-
+            ComputeWage("Reliance", 100, 30, 240);
+            ComputeWage("tata", 120, 26, 208);
+            ComputeWage("Microsoft", 150, 26, 180);
         }
      }
 }
