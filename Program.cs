@@ -14,8 +14,9 @@ namespace EmpWage_Batch222
             empWageBuilder.addCompanyEmpWage("Reliance", 100, 30, 240);
             empWageBuilder.addCompanyEmpWage("tata", 120, 26, 208);
             empWageBuilder.addCompanyEmpWage("Microsoft", 150, 26, 180);
-            empWageBuilder.ComputeEmpWage();           
-
+            empWageBuilder.ComputeEmpWage();
+            Console.WriteLine("Total wage for Reliance company is" + empWageBuilder.getTotalWage("Reliance"));
+            Console.WriteLine("Total wage for tata company is" + empWageBuilder.getTotalWage("tata"));
         }
     }
 }

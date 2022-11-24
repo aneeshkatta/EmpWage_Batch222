@@ -12,9 +12,10 @@ namespace EmpWage_Batch222
         public void ComputeEmpWage();
         public void SetTotalEmpWage(int totalEmpWage);
         public string ToString();
+        public int getTotalWage();
     }
     
-    internal class CompanyEmpWage:  IEmpWagebuilder
+    internal class CompanyEmpWage
     {
         public string company;
         public int mAX_HRS_PER_MONTH;
@@ -38,16 +39,6 @@ namespace EmpWage_Batch222
         {
             return "Total Employee Wage for the Company " + this.company + " is " + this.totalEmpWage;
         }
-        public void addCompanyEmpWage(string company, int mAX_HRS_PER_MONTH, int no_OF_Working_Days, int empRatePerHr)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ComputeEmpWage()
-        {
-            throw new NotImplementedException();
-        }
-
-       
+        
     }
 }
