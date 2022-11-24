@@ -6,69 +6,58 @@ using System.Threading.Tasks;
 
 namespace EmpWage_Batch222
 {
-    class EmpWageBuilderObject
+    class EmpWageBuilderArray
     {
         public const int is_Fulltime = 1;
         public const int is_Parttime = 2;
-        private string company;
-        private int mAX_HRS_PER_MONTH;
-        private int no_OF_Working_Days;
-        private int empRatePerHr;
-        private int totalEmpWage;
-        public EmpWageBuilderObject(string company, int mAX_HRS_PER_MONTH, int no_OF_Working_Days, int empRatePerHr)
+        public int No_of_Companies = 0;
+        private CompanyEmpWage[] CompanyEmpWageArray;
+
+        public EmpWageBuilderArray()
         {
-            this.company = company;
-            this.mAX_HRS_PER_MONTH = mAX_HRS_PER_MONTH;
-            this.no_OF_Working_Days = no_OF_Working_Days;
-            this.empRatePerHr = empRatePerHr;
+            this.CompanyEmpWageArray = new CompanyEmpWage[5];
         }
-        public void ComputeWage()
+        public void addCompanyEmpWage(string company, int mAX_HRS_PER_MONTH, int no_OF_Working_Days, int empRatePerHr)
+        {
+            CompanyEmpWageArray[this.No_of_Companies] = new CompanyEmpWage(company, mAX_HRS_PER_MONTH, no_OF_Working_Days, empRatePerHr);
+            No_of_Companies++;
+        }
+        public void ComputeEmpWage()
+        {
+            for(int i=0;i<No_of_Companies;i++)
+            {
+                CompanyEmpWageArray[i].SetTotalEmpWage(this.ComputeEmpWage(this.CompanyEmpWageArray[i]));
+                Console.WriteLine(this.CompanyEmpWageArray[i].ToString());
+            }
+        }
+        private int ComputeEmpWage(CompanyEmpWage companyEmpWage)
         {
             Console.WriteLine("Welcome to Employee Wage Computation problem");
             int empHrs;
             int totalEmpHrs = 0;
-            int day = 1;
-            while (day <= no_OF_Working_Days && totalEmpHrs <= mAX_HRS_PER_MONTH)
+            int totalWorkingdays = 1;
+            while (totalWorkingdays <= companyEmpWage.no_OF_Working_Days && totalEmpHrs <= companyEmpWage.mAX_HRS_PER_MONTH)
             {
                 Random random = new Random();
                 int empCheck = random.Next(0, 2);
                 switch (empCheck)
                 {
                     case is_Fulltime:
-                        Console.WriteLine("Employee is present full time");
                         empHrs = 8;
                         break;
                     case is_Parttime:
-                        Console.WriteLine("Employee is present part time");
                         empHrs = 4;
                         break;
                     default:
-                        Console.WriteLine("Employee is absent");
                         empHrs = 0;
                         break;
                 }
                 totalEmpHrs += empHrs;
-                Console.WriteLine(" Day   #: " + day + "  Employee hours attended till the day  is " + totalEmpHrs);
-                day++;
+                Console.WriteLine(" Day #: "+ totalWorkingdays +"  Employee hours : " + totalEmpHrs);
+                totalWorkingdays++;
             }
-            totalEmpWage = totalEmpHrs * empRatePerHr;
+            return totalEmpHrs * companyEmpWage.empRatePerHr;
         }
-        public string toString()
-        {
-            return "Total Employee Wage for the Company " + this.company + " is " + this.totalEmpWage;
-        }
-        public static void Main(string[] args)
-        {
-            EmpWageBuilderObject Reliance = new EmpWageBuilderObject("Reliance", 100, 30, 240);
-            Reliance.ComputeWage();
-            Console.WriteLine(Reliance.toString());
-            EmpWageBuilderObject tata = new EmpWageBuilderObject("tata", 120, 26, 208);
-            tata.ComputeWage();
-            Console.WriteLine(tata.toString());
-            EmpWageBuilderObject Microsoft = new EmpWageBuilderObject("Microsoft", 150, 26, 180);
-            Microsoft.ComputeWage();
-            Console.WriteLine(Microsoft.toString());
 
-        }
     }
 }
