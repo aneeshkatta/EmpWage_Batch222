@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmpWage_Batch222
 {
-    class EmpWageBuilderArray
+    class EmpWageBuilderArray 
     {
         public const int is_Fulltime = 1;
         public const int is_Parttime = 2;
@@ -24,12 +24,13 @@ namespace EmpWage_Batch222
         }
         public void ComputeEmpWage()
         {
-            for(int i=0;i<No_of_Companies;i++)
+            for (int i = 0; i < No_of_Companies; i++)
             {
                 CompanyEmpWageArray[i].SetTotalEmpWage(this.ComputeEmpWage(this.CompanyEmpWageArray[i]));
                 Console.WriteLine(this.CompanyEmpWageArray[i].ToString());
             }
         }
+
         private int ComputeEmpWage(CompanyEmpWage companyEmpWage)
         {
             Console.WriteLine("Welcome to Employee Wage Computation problem");
@@ -53,7 +54,7 @@ namespace EmpWage_Batch222
                         break;
                 }
                 totalEmpHrs += empHrs;
-                Console.WriteLine(" Day #: "+ totalWorkingdays +"  Employee hours : " + totalEmpHrs);
+                Console.WriteLine(" Day #: " + totalWorkingdays + "  Employee hours : " + totalEmpHrs);
                 totalWorkingdays++;
             }
             return totalEmpHrs * companyEmpWage.empRatePerHr;
