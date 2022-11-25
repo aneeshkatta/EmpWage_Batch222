@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace EmpWage_Batch222
 {
-    class EmpWageBuilderArray 
+    class EmpWageBuilderArray : IEmpWagebuilder
     {
         public const int is_Fulltime = 1;
         public const int is_Parttime = 2;
         public int No_of_Companies = 0;
-        private CompanyEmpWage[] CompanyEmpWageArray;
-
+        private CompanyEmpWage[] CompanyEmpWageArray;        
         public EmpWageBuilderArray()
         {
-            this.CompanyEmpWageArray = new CompanyEmpWage[5];
+            this.CompanyEmpWageArray = new CompanyEmpWage[5];        
         }
         public void addCompanyEmpWage(string company, int mAX_HRS_PER_MONTH, int no_OF_Working_Days, int empRatePerHr)
         {
@@ -28,7 +28,12 @@ namespace EmpWage_Batch222
             {
                 CompanyEmpWageArray[i].SetTotalEmpWage(this.ComputeEmpWage(this.CompanyEmpWageArray[i]));
                 Console.WriteLine(this.CompanyEmpWageArray[i].ToString());
-            }
+            }       
+        }
+
+        public void SetTotalEmpWage(int totalEmpWage)
+        {
+            throw new NotImplementedException();
         }
 
         private int ComputeEmpWage(CompanyEmpWage companyEmpWage)

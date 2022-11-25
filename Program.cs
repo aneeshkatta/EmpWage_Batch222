@@ -11,9 +11,9 @@ namespace EmpWage_Batch222
         public static void Main(string[] args)
         {
             EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
-            empWageBuilder.addCompanyEmpWage("Reliance", 100, 30, 240);
-            empWageBuilder.addCompanyEmpWage("tata", 120, 26, 208);
-            empWageBuilder.addCompanyEmpWage("Microsoft", 150, 26, 180);
+            empWageBuilder.addCompanyEmpWage("Reliance", 100, 20, 240);
+            empWageBuilder.addCompanyEmpWage("tata", 100, 20, 208);
+            empWageBuilder.addCompanyEmpWage("Microsoft", 100, 20, 180);
             empWageBuilder.ComputeEmpWage();           
 
         }
